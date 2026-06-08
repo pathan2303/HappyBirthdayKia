@@ -30,20 +30,29 @@ document.body.addEventListener('click', (e) => {
     createHeart(e.clientX, e.clientY);
 });
 
-// Heart Blast function
+// ... baaki code wahi rahega, bas heartBlast() function ko replace kar do:
+
 function heartBlast() {
-    for(let i=0; i<40; i++) {
+    for(let i=0; i<50; i++) { // 50 hearts for a bigger effect
         let heart = document.createElement('div');
         heart.className = 'heart';
         heart.innerHTML = '❤️';
-        // Random direction mein blast
-        heart.style.left = window.innerWidth/2 + 'px';
-        heart.style.top = window.innerHeight/2 + 'px';
+        
+        // Poori screen par kahin bhi random position
+        let randomX = Math.random() * window.innerWidth;
+        let randomY = Math.random() * window.innerHeight;
+        
+        heart.style.left = randomX + 'px';
+        heart.style.top = randomY + 'px';
+        
+        // Animation: Har heart thoda alag speed se udayega
         heart.style.animation = `fly ${Math.random()*2 + 1}s ease-out forwards`;
         document.body.appendChild(heart);
+        
         setTimeout(() => heart.remove(), 3000);
     }
 }
+
 
 function createHeart(x, y) {
     let heart = document.createElement('div');
