@@ -1,23 +1,27 @@
-const images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg' '9.jpg' '10.jpg' '11.jpg' '12.jpg'];
+const images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg', '11.jpg', '12.jpg'];
 let index = 0;
 let revealed = false;
+
 const frame = document.getElementById('photo-frame');
 const music = document.getElementById('bg-music');
 const overlay = document.getElementById('overlay');
 const content = document.getElementById('content');
 
-document.body.addEventListener('click', (e) => {
-    // Pehli baar tap: Blast aur Reveal
+// 1. Overlay click handle karega
+overlay.addEventListener('click', () => {
     if(!revealed) {
         revealed = true;
         music.play();
-        overlay.style.display = 'none';
-        content.style.filter = 'blur(0)'; // Blur hata do
-        heartBlast(); // Heart ka dhamaka
-        return;
+        overlay.style.display = 'none'; // Overlay hatao
+        content.style.filter = 'blur(0)'; // Blur hatao
+        heartBlast(); // Blast karo
     }
+});
 
-    // Baad ke taps: Haptic + Image cycle + Single hearts
+// 2. Baaki screen ka click (images ke liye)
+document.body.addEventListener('click', (e) => {
+    if(!revealed) return; // Agar reveal nahi hua toh kuch mat karo
+
     if (navigator.vibrate) navigator.vibrate(50);
     
     frame.style.transform = "scale(0.9)";
@@ -30,29 +34,18 @@ document.body.addEventListener('click', (e) => {
     createHeart(e.clientX, e.clientY);
 });
 
-// ... baaki code wahi rahega, bas heartBlast() function ko replace kar do:
-
 function heartBlast() {
-    for(let i=0; i<50; i++) { // 50 hearts for a bigger effect
+    for(let i=0; i<50; i++) {
         let heart = document.createElement('div');
         heart.className = 'heart';
         heart.innerHTML = '❤️';
-        
-        // Poori screen par kahin bhi random position
-        let randomX = Math.random() * window.innerWidth;
-        let randomY = Math.random() * window.innerHeight;
-        
-        heart.style.left = randomX + 'px';
-        heart.style.top = randomY + 'px';
-        
-        // Animation: Har heart thoda alag speed se udayega
+        heart.style.left = Math.random() * window.innerWidth + 'px';
+        heart.style.top = Math.random() * window.innerHeight + 'px';
         heart.style.animation = `fly ${Math.random()*2 + 1}s ease-out forwards`;
         document.body.appendChild(heart);
-        
         setTimeout(() => heart.remove(), 3000);
     }
 }
-
 
 function createHeart(x, y) {
     let heart = document.createElement('div');
