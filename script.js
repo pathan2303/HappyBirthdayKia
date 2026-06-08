@@ -5,36 +5,32 @@ const music = document.getElementById('bg-music');
 const overlay = document.getElementById('overlay');
 
 document.body.addEventListener('click', (e) => {
-    // Music Start & Hide Overlay
+    // 1. Start music and remove overlay
     if(overlay.style.display !== 'none') {
         music.play();
         overlay.style.display = 'none';
-        return; // Pehli click bas start ke liye
+        return;
     }
 
-    // Haptic Feedback
+    // 2. Haptic Feedback
     if (navigator.vibrate) navigator.vibrate(50);
 
-    // Image Cycle
-    frame.style.transform = "scale(0.9)";
+    // 3. Image Cycle
+    frame.style.transform = "scale(0.85) rotate(5deg)";
     setTimeout(() => {
         index = (index + 1) % images.length;
         frame.style.backgroundImage = `url('images/${images[index]}')`;
-        frame.style.transform = "scale(1)";
+        frame.style.transform = "scale(1) rotate(0deg)";
     }, 300);
 
-    // Multiple Hearts
+    // 4. Create Hearts
     for(let i=0; i<3; i++) {
-        createHeart(e.clientX + (Math.random()*40-20), e.clientY);
+        let heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = (e.clientX + Math.random()*50-25) + 'px';
+        heart.style.top = e.clientY + 'px';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 2000);
     }
 });
-
-function createHeart(x, y) {
-    const heart = document.createElement('div');
-    heart.className = 'heart';
-    heart.innerHTML = '❤️';
-    heart.style.left = x + 'px';
-    heart.style.top = y + 'px';
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 2000);
-}
