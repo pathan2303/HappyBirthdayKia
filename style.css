@@ -6,45 +6,40 @@ body {
     user-select: none;
 }
 
-/* Flash Overlay - Ab top par hai */
+/* Background Blur Effect */
+#content { 
+    text-align: center; transition: filter 1s ease;
+    filter: blur(10px); /* Pehle blur rahega */
+}
+
+/* Overlay Center mein */
 #overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(255, 255, 255, 0.4);
-    display: flex; justify-content: center; align-items: flex-start;
-    padding-top: 10%; z-index: 100;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 100; cursor: pointer;
 }
-.flash-text {
-    font-size: 2.5rem; color: #880e4f;
-    animation: blink 1s infinite;
-    text-shadow: 2px 2px 8px rgba(255,255,255,0.8);
-}
-
-/* Bouncing Animated Title */
-.bounce-text {
-    color: #880e4f; font-size: 3.5rem; margin-bottom: 20px;
-    animation: bounce 2s infinite ease-in-out;
+.reveal-text {
+    font-size: 3rem; color: #880e4f;
+    animation: pulse 1.5s infinite;
+    text-shadow: 2px 2px 10px rgba(255,255,255,0.8);
 }
 
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-}
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
 
-#container { text-align: center; z-index: 5; }
+/* Main Content Styles */
+.bounce-text { color: #880e4f; font-size: 3rem; animation: bounce 2s infinite ease-in-out; }
 #photo-frame {
-    width: 300px; height: 300px; margin: 0 auto;
+    width: 300px; height: 300px; margin: 20px auto;
     border-radius: 50%; border: 8px solid white;
     background-size: cover; background-position: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     transition: all 0.5s ease;
 }
 
-.heart {
-    position: absolute; color: #ff1744; font-size: 30px;
-    pointer-events: none; animation: fly 2s ease-out forwards;
-}
+.heart { position: absolute; color: #ff1744; font-size: 25px; pointer-events: none; }
 @keyframes fly {
     0% { transform: translateY(0) scale(0); opacity: 1; }
-    100% { transform: translateY(-300px) scale(2); opacity: 0; }
+    100% { transform: translateY(-400px) scale(2); opacity: 0; }
 }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
