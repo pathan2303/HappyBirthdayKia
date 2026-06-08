@@ -20,7 +20,7 @@ body {
     z-index: 100; cursor: pointer;
 }
 .reveal-text {
-    font-size: 3rem; color: #880e4f;
+    font-size: 2rem; color: #880e4f;
     animation: pulse 1.5s infinite;
     text-shadow: 2px 2px 10px rgba(255,255,255,0.8);
 }
