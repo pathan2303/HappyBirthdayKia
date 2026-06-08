@@ -1,9 +1,41 @@
-body { background: #ffe6e6; text-align: center; font-family: cursive; overflow: hidden; }
-#photo-frame { width: 300px; height: 300px; margin: 50px auto; border: 5px solid white; border-radius: 20px; transition: transform 0.5s; }
-.heart { position: absolute; color: red; font-size: 20px; animation: float 3s linear; }
-
-@keyframes float {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-500px); opacity: 0; }
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    overflow: hidden;
+    cursor: pointer;
 }
 
+#container { color: #880e4f; }
+h1 { font-size: 2.5rem; margin-bottom: 20px; text-shadow: 1px 1px 2px white; }
+
+#photo-frame {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 8px solid white;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    transition: opacity 0.8s ease-in-out, transform 0.5s;
+    background-image: url('images/1.jpg'); /* Default image */
+}
+
+.heart {
+    position: absolute;
+    color: #ff1744;
+    font-size: 24px;
+    pointer-events: none;
+    animation: float 2s linear forwards;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-500px) scale(1.5); opacity: 0; }
+}
