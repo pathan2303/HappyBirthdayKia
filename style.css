@@ -1,23 +1,9 @@
-const images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg'];
-let index = 0;
-const frame = document.getElementById('photo-frame');
-const music = document.getElementById('bg-music');
+body { background: #ffe6e6; text-align: center; font-family: cursive; overflow: hidden; }
+#photo-frame { width: 300px; height: 300px; margin: 50px auto; border: 5px solid white; border-radius: 20px; transition: transform 0.5s; }
+.heart { position: absolute; color: red; font-size: 20px; animation: float 3s linear; }
 
-document.body.addEventListener('click', () => {
-    // Image Changer
-    frame.style.backgroundImage = `url('images/${images[index]}')`;
-    frame.style.backgroundSize = 'cover';
-    index = (index + 1) % images.length;
-    
-    // Play Music
-    music.play();
-    
-    // Heart Animation on Tap
-    let heart = document.createElement('div');
-    heart.innerHTML = '❤️';
-    heart.className = 'heart';
-    heart.style.left = event.clientX + 'px';
-    heart.style.top = event.clientY + 'px';
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 3000);
-});
+@keyframes float {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-500px); opacity: 0; }
+}
+
