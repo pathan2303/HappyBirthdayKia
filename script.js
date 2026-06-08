@@ -47,13 +47,26 @@ function heartBlast() {
     }
 }
 
+// Har tap par 5-6 hearts ka chhota blast
 function createHeart(x, y) {
-    let heart = document.createElement('div');
-    heart.className = 'heart';
-    heart.innerHTML = '❤️';
-    heart.style.left = x + 'px';
-    heart.style.top = y + 'px';
-    heart.style.animation = 'fly 2s ease-out forwards';
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 2000);
+    for(let i = 0; i < 6; i++) {
+        let heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '❤️';
+        
+        // Tap ki position ke aas-paas bikhre hue hearts
+        let offsetX = (Math.random() * 60) - 30;
+        let offsetY = (Math.random() * 60) - 30;
+        
+        heart.style.left = (x + offsetX) + 'px';
+        heart.style.top = (y + offsetY) + 'px';
+        
+        // Animation thoda fast taaki feel aaye
+        heart.style.animation = `fly ${Math.random() * 1 + 0.5}s ease-out forwards`;
+        document.body.appendChild(heart);
+        
+        // Cleanup
+        setTimeout(() => heart.remove(), 2000);
+    }
+
 }
