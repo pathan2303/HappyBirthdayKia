@@ -1,41 +1,25 @@
 body {
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-family: 'Dancing Script', cursive;
-    overflow: hidden;
-    cursor: pointer;
+    margin: 0; height: 100vh;
+    background: radial-gradient(circle, #ffdee9 0%, #b5fffc 100%);
+    display: flex; justify-content: center; align-items: center;
+    font-family: 'Dancing Script', cursive; overflow: hidden;
+    user-select: none;
 }
-
-#container { color: #880e4f; }
-h1 { font-size: 2.5rem; margin-bottom: 20px; text-shadow: 1px 1px 2px white; }
-
+#overlay { position: absolute; font-size: 1.5rem; color: #880e4f; z-index: 10; }
+#container { text-align: center; z-index: 5; }
+h1 { color: #880e4f; font-size: 3rem; margin-bottom: 20px; }
 #photo-frame {
-    width: 300px;
-    height: 300px;
-    margin: 0 auto;
-    border-radius: 50%;
-    border: 8px solid white;
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    transition: opacity 0.8s ease-in-out, transform 0.5s;
-    background-image: url('images/1.jpg'); /* Default image */
+    width: 300px; height: 300px; margin: 0 auto;
+    border-radius: 20px; border: 5px solid white;
+    background-size: cover; background-position: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    transition: all 0.6s ease;
 }
-
 .heart {
-    position: absolute;
-    color: #ff1744;
-    font-size: 24px;
-    pointer-events: none;
-    animation: float 2s linear forwards;
+    position: absolute; color: #ff1744; font-size: 25px;
+    pointer-events: none; animation: fly 2s ease-out forwards;
 }
-
-@keyframes float {
-    0% { transform: translateY(0) scale(1); opacity: 1; }
-    100% { transform: translateY(-500px) scale(1.5); opacity: 0; }
+@keyframes fly {
+    0% { transform: translateY(0) scale(0); opacity: 1; }
+    100% { transform: translateY(-200px) scale(2); opacity: 0; }
 }
