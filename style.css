@@ -1,45 +1,16 @@
-body {
-    margin: 0; height: 100vh;
-    background: radial-gradient(circle, #ffdee9 0%, #b5fffc 100%);
-    display: flex; justify-content: center; align-items: center;
-    font-family: 'Dancing Script', cursive; overflow: hidden;
-    user-select: none;
-}
+body { margin: 0; height: 100vh; background: radial-gradient(circle, #ffdee9 0%, #b5fffc 100%); display: flex; justify-content: center; align-items: center; font-family: 'Dancing Script', cursive; overflow: hidden; user-select: none; }
 
-/* Background Blur Effect */
-#content { 
-    text-align: center; transition: filter 1s ease;
-    filter: blur(10px); /* Pehle blur rahega */
-}
+#content { text-align: center; transition: filter 1s ease; filter: blur(10px); z-index: 2; }
 
-/* Overlay Center mein */
-#overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    display: flex; justify-content: center; align-items: center;
-    z-index: 100; cursor: pointer;
-}
-.reveal-text {
-    font-size: 2rem; color: #880e4f;
-    animation: pulse 1.5s infinite;
-    text-shadow: 2px 2px 10px rgba(255,255,255,0.8);
-}
+#overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.2); display: flex; justify-content: center; align-items: center; z-index: 100; cursor: pointer; }
+.reveal-text { font-size: 3rem; color: #880e4f; animation: pulse 1.5s infinite; text-shadow: 2px 2px 10px white; }
+
+.bounce-text { color: #880e4f; font-size: 3rem; animation: bounce 2s infinite ease-in-out; }
+#photo-frame { width: 300px; height: 300px; margin: 20px auto; border-radius: 50%; border: 8px solid white; background-size: cover; background-position: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: all 0.5s ease; position: relative; z-index: 2; }
+
+.heart { position: absolute; color: #ff1744; font-size: 25px; pointer-events: none; z-index: 1; }
 
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-
-/* Main Content Styles */
-.bounce-text { color: #880e4f; font-size: 3rem; animation: bounce 2s infinite ease-in-out; }
-#photo-frame {
-    width: 300px; height: 300px; margin: 20px auto;
-    border-radius: 50%; border: 8px solid white;
-    background-size: cover; background-position: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    transition: all 0.5s ease;
-}
-
-.heart { position: absolute; color: #ff1744; font-size: 25px; pointer-events: none; }
-@keyframes fly {
-    0% { transform: translateY(0) scale(0); opacity: 1; }
-    100% { transform: translateY(-400px) scale(2); opacity: 0; }
-}
 @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+@keyframes fly { 0% { transform: translateY(0) scale(0); opacity: 1; } 100% { transform: translateY(-300px) scale(2); opacity: 0; } }
+@keyframes fade { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(2); } }
